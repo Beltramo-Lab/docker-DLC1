@@ -39,10 +39,12 @@ USER ${user_name}
 WORKDIR /work
 
 # Install DeepLabCut
-RUN conda install -y tensorflow==1.8 tensorflow-gpu==1.8
-RUN pip install --upgrade --force-reinstall pip==9.0.3
+#RUN conda install -y tensorflow==1.8 tensorflow-gpu==1.8
+RUN conda install -y tensorflow==1.15.4 tensorflow-gpu==1.15.4 # edited above line to this
+#RUN pip install --upgrade --force-reinstall pip==9.0.3 # commented this out
 RUN pip install deeplabcut
-RUN pip install https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-16.04/wxPython-4.0.3-cp36-cp36m-linux_x86_64.whl
+#RUN pip install https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-16.04/wxPython-4.0.3-cp36-cp36m-linux_x86_64.whl
+pip install -U wxPython # commented above line as it is for linux machine, and the line of code I added here should be for Windows
 
 # Install dependencies of wxPython
 RUN sudo apt-get update --fix-missing && \
@@ -51,6 +53,13 @@ RUN sudo apt-get update --fix-missing && \
     libsdl1.2-dev libgstreamer-plugins-base1.0-dev \
     libnotify-dev freeglut3 freeglut3-dev libsm-dev \
     libwebkitgtk-dev libwebkitgtk-3.0-dev
+    
+    # I added these lines here
+    pip install tensorflow-gpu==1.15.4 # depending on whether you will be using CPU or GPU TensorFlow.
+    pip install wxPython==4.0.4
+    pip install deeplabcut==2.2b8
+    ipython
+
 
 WORKDIR /work
 CMD ["/bin/bash"]
