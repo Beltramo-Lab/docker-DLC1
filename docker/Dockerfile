@@ -40,7 +40,8 @@ WORKDIR /work
 
 # Install DeepLabCut
 #RUN conda install -y tensorflow==1.8 tensorflow-gpu==1.8
-RUN conda install -y tensorflow==1.15.4 tensorflow-gpu==1.15.4 # edited above line to this
+#RUN conda install -y tensorflow==1.15.4 tensorflow-gpu==1.15.4 # edited above line to this
+RUN conda install -y tensorflow==2.8.0 tensorflow-gpu==2.8.0 # edited above line to this
 #RUN pip install --upgrade --force-reinstall pip==9.0.3 # commented this out
 RUN pip install deeplabcut
 #RUN pip install https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-16.04/wxPython-4.0.3-cp36-cp36m-linux_x86_64.whl
@@ -55,7 +56,7 @@ RUN sudo apt-get update --fix-missing && \
     libwebkitgtk-dev libwebkitgtk-3.0-dev
     
     # I added these lines here
-    pip install tensorflow-gpu==1.15.4 # depending on whether you will be using CPU or GPU TensorFlow.
+    pip install tensorflow-gpu==2.8.0 # depending on whether you will be using CPU or GPU TensorFlow.
     pip install wxPython==4.0.4
     pip install deeplabcut==2.2b8
     ipython
